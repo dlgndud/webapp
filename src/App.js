@@ -7,7 +7,7 @@ import Subject from './components/Subject';
 
 class App extends Component {
 
-  // class 초기화 block
+  // class 초기화 block!
   constructor(props) {
     super(props);
     this.state = {
