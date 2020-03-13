@@ -15,8 +15,8 @@ class App extends Component {
     super(props);
     this.max_content_id = 3; // 불필요한 렌더링 방지를 위해 state에서 분리
     this.state = {
-      mode:'create',
-      welcome:{title:'', desc:'Hello React!'},
+      mode:'welcome',
+      welcome:{title:'Welcome', desc:'Hello World!'},
       subject:{title:'WEB', sub:'world wide web!'},
       selected_content_id:1,
       content:[
@@ -81,7 +81,7 @@ class App extends Component {
                     }
                     >
                   </UpdateContent>
-    }
+    } 
 
     return _article;
   }
@@ -118,7 +118,23 @@ class App extends Component {
           }.bind(this)
         }></TOC>
         <Control onChangeMode={function(mode){
-          this.setState({mode:mode});
+          console.log(mode);
+          if(mode==='delete') {
+            if(window.confirm('Really?')) {
+              let i = 0;
+              let _content = Array.from(this.state.content);
+              while(i<_content.length) {
+                  if(_content[i].id===this.state.selected_content_id) {
+                    _content.splice(i,1); break;
+                  }
+                i++;
+              }
+              this.setState({mode:'welcome', content:_content})
+              alert('deleted!');
+            }
+          } else {
+            this.setState({mode:mode});
+          }
         }.bind(this)}>
         </Control>
 
