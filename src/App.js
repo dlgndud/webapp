@@ -10,7 +10,7 @@ import UpdateContent from './components/UpdateContent';
 
 class App extends Component {
 
-  // class 초기화 block
+  // class 초기화 block!
   constructor(props) {
     super(props);
     this.max_content_id = 3; // 불필요한 렌더링 방지를 위해 state에서 분리
